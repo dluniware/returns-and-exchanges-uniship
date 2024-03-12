@@ -1,5 +1,5 @@
 #returns {
   min-width: 100%;
-  /* height: 80dvh; */
+  max-width: 100%;
   border: none;
 }
