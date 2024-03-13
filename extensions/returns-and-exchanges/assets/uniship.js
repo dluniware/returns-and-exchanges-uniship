@@ -1,3 +1,5 @@
+setIframeSource()
+
 window.addEventListener('message', (message) => {
   const fn = function (message) {
     if (message.data?.type === 'MAKE_CALL') handleAPICalls(message)
@@ -89,4 +91,24 @@ function handleDimensionsChange(message) {
     iframe.style.height = `${height + 5}px`
   if (iframe && width && currentWidth !== width)
     iframe.style.width = `${width}px`
+}
+
+function setIframeSource() {
+  const url = new URL(window.location.href)
+  const searchParams = new URLSearchParams(url.search)
+  const iframe = document.getElementById('returns')
+
+  if (searchParams.has('order_id') && searchParams.has('identifier')) {
+    const orderId = decodeURIComponent(searchParams.get('order_id'))
+    const identifier = decodeURIComponent(searchParams.get('identifier'))
+    iframe.setAttribute(
+      'src',
+      `https://qa-rms-unilog.unicommerce.com/search/?order_id=${encodeURIComponent(
+        orderId
+      )}&identifier=${encodeURIComponent(identifier)}`
+    )
+  } else {
+    iframe.setAttribute('src', 'https://qa-rms-unilog.unicommerce.com/')
+  }
+  iframe.classList.remove('hide')
 }

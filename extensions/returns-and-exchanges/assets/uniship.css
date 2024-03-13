@@ -3,3 +3,7 @@
   max-width: 100%;
   border: none;
 }
+
+.hide {
+  display: none;
+}
