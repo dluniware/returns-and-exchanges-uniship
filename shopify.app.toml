@@ -16,7 +16,7 @@ redirect_urls = [ "https://shopify.dev/apps/default-app-home/api/auth" ]
 api_version = "2024-01"
 
 [app_proxy]
-url = "https://qamerchant-unilog.unicommerce.com/"
+url = "https://api-unilog.unicommerce.com/"
 subpath = "uniship-proxy"
 prefix = "apps"
 
