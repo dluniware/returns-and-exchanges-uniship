@@ -49,6 +49,7 @@ async function handleAPICalls(message) {
     }
 
     const text = await response.text()
+    const didErrorOccur = JSON.parse(text).hasOwnProperty('errorCode')
 
     top.document.querySelector('#returns').contentWindow.postMessage(
       {
@@ -56,7 +57,7 @@ async function handleAPICalls(message) {
         text: response.ok ? text : '',
         status: response.status,
         'Rms-Buyer-Session': response.headers.get('Rms-Buyer-Session'),
-        ok: response.ok,
+        ok: didErrorOccur ? false : response.ok,
         statusText: response.statusText,
         key: message.data?.key,
       },
@@ -107,11 +108,18 @@ function setIframeSource() {
         orderId
       )}&identifier=${encodeURIComponent(identifier)}`
     )
+    // iframe.setAttribute(
+    //   'src',
+    //   `http://localhost:3001/search/?order_id=${encodeURIComponent(
+    //     orderId
+    //   )}&identifier=${encodeURIComponent(identifier)}`
+    // )
   } else {
     iframe.setAttribute(
       'src',
       'https://montecarlofashions-rms-unilog.unicommerce.com/'
     )
+    // iframe.setAttribute('src', `http://localhost:3001/`)
   }
   iframe.classList.remove('hide')
 }
