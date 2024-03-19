@@ -40,6 +40,21 @@ async function handleAPICalls(message) {
         body: formData,
         headers,
       })
+    } else if (message.data?.key.includes('api/v1/rms/customer/upload-media')) {
+      const formData = new FormData()
+
+      const file = new File(
+        [message.data?.parameters.file],
+        message.data?.parameters.fileName
+      )
+
+      formData.append('files', file, message.data?.parameters.fileName)
+
+      response = await fetch(message.data?.key, {
+        method: message.data?.method,
+        body: formData,
+        headers,
+      })
     } else {
       response = await fetch(message.data?.key, {
         method: message.data?.method,
