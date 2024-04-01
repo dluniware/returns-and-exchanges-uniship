@@ -119,7 +119,7 @@ function setIframeSource() {
     const identifier = decodeURIComponent(searchParams.get('identifier'))
     iframe.setAttribute(
       'src',
-      `https://montecarlofashions-rms-unilog.unicommerce.com/search/?order_id=${encodeURIComponent(
+      `https://onefriday-rms-unilog.unicommerce.com/search/?order_id=${encodeURIComponent(
         orderId
       )}&identifier=${encodeURIComponent(identifier)}`
     )
@@ -132,7 +132,7 @@ function setIframeSource() {
   } else {
     iframe.setAttribute(
       'src',
-      'https://montecarlofashions-rms-unilog.unicommerce.com/'
+      'https://onefriday-rms-unilog.unicommerce.com/'
     )
     // iframe.setAttribute('src', `http://localhost:3001/`)
   }
