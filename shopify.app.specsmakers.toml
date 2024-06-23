@@ -1,13 +1,17 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
-client_id = "c10635f3d6bde22767230786ceaae199"
-name = "newfangled"
+client_id = "6bd39ad0bb3edf4855eb30365da26163"
+name = "specsmakers"
 application_url = "https://shopify.dev/apps/default-app-home"
 embedded = true
 
 [build]
 dev_store_url = "quickstart-72ab149d.myshopify.com"
 include_config_on_deploy = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = ""
 
 [auth]
 redirect_urls = [ "https://shopify.dev/apps/default-app-home/api/auth" ]
